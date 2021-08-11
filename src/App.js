@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import BarChart from './components/BarChart';
 import PieChart from './components/PieChart/PieChart';
