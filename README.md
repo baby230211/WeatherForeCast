@@ -1,4 +1,4 @@
-# 5 Day ForeCast
+# Five Day ForeCast
 
 > - 使用者輸入
 > - 地區
@@ -11,12 +11,18 @@
 - 五天的濕度(Pie Chart)
 
 1. User enter Taipei
-2. User press query 3.顯示圖表
+   1-1. User enter nothing or unknown location pop with error message 'Please enter correct location'
+2. User press query
+3. 顯示圖表
 
-### package used
+### Tech used
 
 - axios
-- Redux (redux, react-redux, redux-thunk<middleware>)
+- useCustomHook -> Redux (redux, react-redux, redux-thunk)
 - Emotion(styled component)
 
--- implement redux middleware
+### 問題
+
+1. 純 css 繪製 bar chart with animation
+2. 純 css 繪製 pie chart with animation
+3. multiple dispatch with async await
