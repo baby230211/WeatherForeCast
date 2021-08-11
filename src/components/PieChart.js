@@ -1,6 +1,7 @@
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Pie from './Pie';
 const PieWrapper = styled.div`
   margin: auto;
@@ -26,42 +27,23 @@ const PieContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 `;
+const Title = styled.div`
+  padding-bottom: 50px;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+`;
 
-const PieChart = ({ currentForeCasts }) => {
-  const humidity2 = currentForeCasts.map((forecast) => {
-    return {
-      applicable_date: forecast['applicable_date'],
-      humidity: forecast['humidity'],
-    };
-  });
+const PieChart = () => {
+  const weatherForecasts = useSelector((state) => state.weatherReducers);
+  const { weatherForecast = [] } = weatherForecasts;
   return (
     <>
-      {currentForeCasts.length !== 0 && (
+      {weatherForecast.length !== 0 && (
         <PieWrapper>
-          <div
-            style={{
-              width: '100%',
-              textAlign: 'center',
-              fontSize: 30,
-              marginBottom: 20,
-            }}
-          >
-            Humidity
-          </div>
-          {humidity2.map(({ humidity, applicable_date }) => (
-            <PieContainer>
-              <div
-                style={{
-                  paddingBottom: 20,
-                  fontSize: 20,
-                  color: 'white',
-                  textAlign: 'center',
-                }}
-              >
-                {applicable_date}
-              </div>
-              <Pie p={humidity} />
-            </PieContainer>
+          <Title>Humidity</Title>
+          {weatherForecast.map(({ id, humidity, applicable_date }) => (
+            <Pie key={id} p={humidity} applicable_date={applicable_date} />
           ))}
         </PieWrapper>
       )}

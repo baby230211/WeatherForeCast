@@ -12,3 +12,11 @@
 
 1. User enter Taipei
 2. User press query 3.顯示圖表
+
+### package used
+
+- axios
+- Redux (redux, react-redux, redux-thunk<middleware>)
+- Emotion(styled component)
+
+-- implement redux middleware

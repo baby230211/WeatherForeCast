@@ -79,8 +79,21 @@ const BarRight = styled.div`
   animation-duration: 1s;
   z-index: 10;
 `;
-
-const PieCircle = ({ p }) => {
+const PieContainer = styled.div`
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+`;
+const DateText = styled.div`
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+`;
+const PieCircle = ({ p, applicable_date }) => {
   const [count, setCount] = useState(1);
   const degree = (p * 360) / 100;
   useEffect(() => {
@@ -95,19 +108,23 @@ const PieCircle = ({ p }) => {
       clearInterval(id);
     };
   }, [count]);
+
   if (!p) {
     return <></>;
   }
 
   return (
-    <Pie>
-      <Circle>
-        <PieInner>{count}%</PieInner>
-        <BarOrigin percentage={degree}></BarOrigin>
-        <BarLeft percentage={degree} />
-        <BarRight percentage={degree} />
-      </Circle>
-    </Pie>
+    <PieContainer>
+      <DateText>{applicable_date}</DateText>
+      <Pie>
+        <Circle>
+          <PieInner>{count}%</PieInner>
+          <BarOrigin percentage={degree}></BarOrigin>
+          <BarLeft percentage={degree} />
+          <BarRight percentage={degree} />
+        </Circle>
+      </Pie>
+    </PieContainer>
   );
 };
 

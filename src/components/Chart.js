@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { useSelector } from 'react-redux';
 const ChartContainer = styled.div`
   margin: auto;
   margin-top: 100px;
@@ -20,15 +21,15 @@ const List = styled.li`
   height: 150px;
   position: relative;
   bottom: 145px;
-  span {
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
-    font-size: 12px;
-    font-weight: 600;
-  }
 `;
-const Capture = styled.ul`
+const Y_coordinates = styled.span`
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  font-size: 12px;
+  font-weight: 600;
+`;
+const Legend = styled.ul`
   position: absolute;
   right: 70px; /* remained 50px + pd 20px */
   top: 70px;
@@ -48,7 +49,7 @@ const Capture = styled.ul`
   }
 `;
 
-const Bars = styled.ul`
+const BarsContainer = styled.ul`
   display: inline-table;
   width: 500px;
   vertical-align: top;
@@ -92,52 +93,54 @@ const Categories = styled.li`
   display: table-cell;
   table-layout: fixed;
   position: relative;
-
-  span {
-    position: absolute;
-    bottom: -30px;
-    left: 0px;
-    width: 100%;
-    text-align: center;
-  }
 `;
+const DateText = styled.span`
+  position: absolute;
+  bottom: -30px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+`;
+
 const Chart = ({ currentForeCasts, target }) => {
-  const temp = currentForeCasts.map((forecast) => {
+  const weatherForecasts = useSelector((state) => state.weatherReducers);
+  const { weatherForecast = [] } = weatherForecasts;
+  const temp = weatherForecast.map((forecast) => {
     return forecast[target];
   });
-  const min = (temp && Math.floor(Math.min(...temp)) - 5) || 0;
+  const min = (temp && Math.floor(Math.min(...temp))) || 0;
   return (
     <>
-      {currentForeCasts.length !== 0 && (
+      {weatherForecast.length !== 0 && (
         <ChartContainer>
           <NumberContainer>
             <List>
-              <span>{min + 10}°C</span>
+              <Y_coordinates>{min + 4}°C</Y_coordinates>
             </List>
             <List>
-              <span>{min + 5}°C</span>
+              <Y_coordinates>{min + 2}°C</Y_coordinates>
             </List>
             <List>
-              <span>{min}°C</span>
+              <Y_coordinates>{min}°C</Y_coordinates>
             </List>
           </NumberContainer>
-          <Capture>
+          <Legend>
             <span>{target}</span>
-          </Capture>
-          <Bars>
-            {currentForeCasts.map((forecast) => {
+          </Legend>
+          <BarsContainer>
+            {weatherForecast.map((forecast) => {
               const temp = Math.floor(forecast[target] * 100) / 100;
               return (
-                <Categories key={forecast.applicable_date}>
+                <Categories key={forecast.id}>
                   <Bar
-                    height={`${((temp - min) / 10) * 100}%`}
+                    height={`${((temp - min) / 4) * 100}%`}
                     data-percentage={temp}
                   ></Bar>
-                  <span>{forecast.applicable_date}</span>
+                  <DateText>{forecast.applicable_date}</DateText>
                 </Categories>
               );
             })}
-          </Bars>
+          </BarsContainer>
         </ChartContainer>
       )}
     </>
