@@ -107,8 +107,7 @@ const PieCircle = ({ p, applicable_date }) => {
     return () => {
       clearInterval(id);
     };
-  }, [count]);
-
+  }, [count, p]);
   if (!p) {
     return <></>;
   }

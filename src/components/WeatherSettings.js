@@ -63,8 +63,8 @@ const WeatherSettings = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // const [currentForeCasts, fetchData] = useWeatherApi(currentLocation);
   const clickHandler = async () => {
+    if (!inputLocation) return;
     setIsLoading(true);
 
     try {
@@ -72,8 +72,7 @@ const WeatherSettings = () => {
       await dispatch(fetchWeather());
       setErrorMessage('');
     } catch (error) {
-      console.log(error);
-      setErrorMessage(error);
+      setErrorMessage(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -104,13 +103,9 @@ const WeatherSettings = () => {
           />
 
           <datalist id="location-list">
-            <option value="a"></option>
-            <option value="b"></option>
-            <option value="c"></option>
-            <option value="d"></option>
-            <option value="e"></option>
-            <option value="aa"></option>
-            <option value="aaa"></option>
+            <option value="London"></option>
+            <option value="Taipei"></option>
+            <option value="Tokyo"></option>
           </datalist>
           <Error errorMessage={errorMessage}>{errorMessage}</Error>
           <ButtonWrapper>

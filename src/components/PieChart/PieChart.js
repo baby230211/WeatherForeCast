@@ -1,6 +1,5 @@
-import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Pie from './Pie';
 const PieWrapper = styled.div`
@@ -18,15 +17,7 @@ const PieWrapper = styled.div`
   font-size: 12px;
   color: white;
 `;
-const PieContainer = styled.div`
-  border: 1px solid #ccc;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-`;
+
 const Title = styled.div`
   padding-bottom: 50px;
   font-size: 30px;

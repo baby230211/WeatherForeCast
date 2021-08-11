@@ -1,13 +1,12 @@
-import { FETCH_WEATHER_ID, FETCH_WEATHER, SET_WEATHER } from './types';
+import { FETCH_WEATHER_ID, FETCH_WEATHER } from './types';
 import weatherApi from '../api/weatherApi';
 
 export const fetchWeatherId = (locationName) => async (dispatch, getState) => {
   // output : id string
   const res = await weatherApi.get(`/search/?query=${locationName}`);
   const [data] = res.data;
-  if (!data) throw 'Please Enter correct location';
+  if (!data) throw new Error({ message: 'Please Enter correct location' });
   const { woeid } = data;
-  console.log(woeid);
 
   dispatch({
     type: FETCH_WEATHER_ID,
