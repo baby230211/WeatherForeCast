@@ -11,7 +11,7 @@
 - 五天的濕度(Pie Chart)
 
 1. User enter Taipei
-   1-1. User enter nothing or unknown location pop with error message 'Please enter correct location'
+   1. User enter nothing or unknown location pop with error message 'Please enter correct location'
 2. User press query
 3. 顯示圖表
 
