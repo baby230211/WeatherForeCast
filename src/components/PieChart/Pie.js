@@ -10,11 +10,11 @@ const PieInner = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50px;
-  height: 50px;
-  background: gray;
+  width: 75px;
+  height: 75px;
+  background: #bbb;
   border-radius: 100%;
-  line-height: 50px;
+  line-height: 75px;
   text-align: center;
   font-size: 18px;
   transform: translate(-50%, -50%);
@@ -39,6 +39,7 @@ const Circle = styled.div`
   height: 100%;
   border-radius: 100%;
   background: white;
+  box-shadow: 0 0 10px #555;
   position: relative;
   overflow: hidden;
 `;
@@ -80,13 +81,13 @@ const BarRight = styled.div`
   z-index: 10;
 `;
 const PieContainer = styled.div`
-  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  background: white;
+  box-shadow: 0 0 10px 0 #555;
 `;
 const DateText = styled.div`
   padding-bottom: 20px;

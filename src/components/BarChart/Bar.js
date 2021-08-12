@@ -13,7 +13,7 @@ const Bar = styled.div`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #17c0eb;
+  background-color: #e74c3c;
   animation: ${draw} 1s ease-in-out;
 
   &::before {
@@ -38,7 +38,7 @@ const DateText = styled.span`
   width: 100%;
   text-align: center;
 `;
-const BarChart = ({ temp, height, applicable_date }) => {
+const BarContainer = ({ temp, height, applicable_date }) => {
   return (
     <Categories>
       <Bar height={height} data-percentage={temp}></Bar>
@@ -47,4 +47,4 @@ const BarChart = ({ temp, height, applicable_date }) => {
   );
 };
 
-export default BarChart;
+export default BarContainer;

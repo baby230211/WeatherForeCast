@@ -28,7 +28,11 @@ export const fetchWeather = () => async (dispatch, getState) => {
   const res = await weatherApi.get(`/${locationId}`);
   const data = res.data;
   const { consolidated_weather } = data;
-  const usefulData = consolidated_weather.reduce((accum, current) => {
+  const usefulData = consolidated_weather.reduce((accum, current, index) => {
+    // 取五天
+    if (index === 0) {
+      return accum;
+    }
     const {
       id,
       weather_state_name,

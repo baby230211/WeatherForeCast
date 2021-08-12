@@ -6,16 +6,14 @@ const PieWrapper = styled.div`
   margin: auto;
   margin-top: 100px;
   width: 100%;
-  min-width: 600px;
+  min-width: 640px;
   position: relative;
-  padding: 75px 20px 50px;
-  border: 1px solid black;
   display: flex;
-  background: #555;
+  background: #bbb;
   justify-content: space-evenly;
   flex-wrap: wrap;
   font-size: 12px;
-  color: white;
+  padding: 40px 0px;
 `;
 
 const Title = styled.div`
@@ -32,7 +30,7 @@ const PieChart = () => {
     <>
       {weatherForecast.length !== 0 && (
         <PieWrapper>
-          <Title>Humidity</Title>
+          <Title>天氣預報 —— 濕 度</Title>
           {weatherForecast.map(({ id, humidity, applicable_date }) => (
             <Pie key={id} p={humidity} applicable_date={applicable_date} />
           ))}

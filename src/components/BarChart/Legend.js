@@ -17,7 +17,7 @@ const LegendTitle = styled.span`
     width: 10px;
     height: 10px;
     margin-right: 5px;
-    background-color: #17c0eb;
+    background-color: #e74c3c;
   }
 `;
 const Legend = ({ target }) => {
